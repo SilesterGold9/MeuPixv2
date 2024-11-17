@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeuPix.ai - Login</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+<main class="l-container">
+    <div class="brand-card">
+        <img src="../assets/MeuPiX-Escudo.png" alt="MeuPix.ai Logo" class="brand__logo">
+        <span class="brand__text"><span>MeuPix.ai</span></span>
+    </div>
+
+    <div class="login-card">
+        <h1 class="login-card__title">Acessar conta MeuPix</h1>
+
+        <form>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="E-mail" required>
+                <span class="form-icon">✉️</span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Senha" required>
+                <span class="form-icon">🔒</span>
+            </div>
+
+            <div class="forgot-password">
+                <a href="#">Esqueci minha senha</a>
+            </div>
+
+            <button type="submit" class="btn btn--primary">Entrar</button>
+
+            <script>
+                const button = document.getElementById('submitBtn');
+
+                button.addEventListener('click', () => {
+                    // Adiciona o estado de loading
+                    button.classList.add('btn--loading');
+                    button.disabled = true;
+
+                    // Simula uma ação (como envio de formulário)
+                    setTimeout(() => {
+                        // Remove o estado de loading
+                        button.classList.remove('btn--loading');
+                        button.disabled = false;
+                    }, 3000); // Tempo de loading simulado (3 segundos)
+                });
+            </script>
+        </form>
+    </div>
+</main>
+
+<footer class="l-footer">
+    <nav class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">FAQ</a>
+        <a href="#">Acessar minha conta</a>
+        <a href="#">Precisa de ajuda?</a>
+    </nav>
+</footer>
+
+<script defer src="script.js"></script>
+</body>
+</html>
