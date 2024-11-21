@@ -1,0 +1,349 @@
+/* Base */
+:root {
+    --primary-blue: #47688D;
+    --text-color: #2D2508;
+    --link-color: #0066cc;
+    --gray-bg: #f0f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F6F6F6;
+}
+
+/* Layout */
+.l-container {
+    width: 100%;
+    max-width: 600px;  /* Aumentei para dar mais espaço ao conteúdo */
+    margin: 0 auto;
+    padding: 0 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante altura total para centralização */
+}
+
+.l-footer {
+    text-align: center;
+    padding: 2rem;
+    position: fixed; /* Footer fixo na base */
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Modules */
+.brand-card {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-265px); /* Posiciona em relação ao centro */
+    background: white;
+    padding: 1.25rem 2rem;  /* Padding maior */
+    border-radius: 12px;    /* Border radius maior */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;  /* Gap maior */
+    z-index: 2;
+}
+
+.brand__logo {
+    width: 40px;   /* Logo maior */
+    height: 40px;
+}
+
+.brand__text {
+    color: #000;
+    font-weight: 500;
+    font-size: 1.25rem;  /* Texto maior */
+}
+
+.brand__text span {
+    color: #FCE38A;
+}
+
+.login-card {
+    background: white;
+    padding: 3rem;  /* Padding maior */
+    border-radius: 12px;  /* Border radius maior */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+    height: 24rem;
+
+}
+.user{
+    margin-bottom: 2rem;
+}
+.user h2{
+    opacity: 75%;
+}
+
+.login-card__title {
+    font-size: 1.6rem;  /* Título maior */
+    margin-bottom: 2rem;  /* Margem maior */
+    text-align: center;
+    color: var(--primary-blue);
+}
+
+.form-group {
+    margin-bottom: 2rem;  /* Espaçamento maior */
+    position: relative;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;  /* Padding maior */
+    border: 1px solid #ddd;
+    border-radius: 8px;  /* Border radius maior */
+    background-color: var(--gray-bg);
+    font-size: 1.1rem;  /* Fonte maior */
+}
+
+.form-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.2rem;  /* Ícone maior */
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;  /* Padding maior */
+    border: none;
+    border-radius: 8px;  /* Border radius maior */
+    font-size: 1.1rem;  /* Fonte maior */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn {
+    transition: transform 0.2s ease;
+}
+.btn:hover {
+    transform: scale(1.02);
+}
+
+
+/* Estado de loading */
+.btn--loading {
+    position: relative;
+    pointer-events: none; /* Evita cliques enquanto carrega */
+    opacity: 0.8; /* Aparência de desabilitado */
+}
+
+/* Spinner */
+.btn--loading::after {
+    content: "";
+    position: absolute;
+    right: 16px; /* Ajuste conforme necessário */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+/* Animação de rotação */
+@keyframes spin {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+
+
+.btn--primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #3a5872;
+}
+
+.forgot-password {
+    text-align: center;
+    margin: 1.5rem 0;  /* Margem maior */
+}
+
+.forgot-password a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 1rem;  /* Fonte maior */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;  /* Gap maior */
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;  /* Fonte maior */
+}
+
+/* State */
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    transition: border-color 0.2s ease;
+
+
+}
+
+.form-box {
+    text-align: center;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.input-box select,
+.input-box input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #cbcaca;
+    color: #555;
+}
+
+.input-box select:focus,
+.input-box input:focus {
+    border-color: #2b6cb0;
+    outline: none;
+}
+
+.button-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.button-container button {
+    background-color: #47688D;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    margin: 1rem 0.6em;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #234876;
+}
+
+.rules {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: #555;
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
+}
+
+.rules p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.rules ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.rules li {
+    margin-bottom: 0.25rem;
+}
+
+@media (max-height: 600px) {
+    .l-footer {
+        position: relative;
+    }
+}
+
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .l-container {
+        padding: 1rem;
+        justify-content: flex-start;
+    }
+    .l-container {
+        min-height: calc(100vh - 4rem); /* Subtraia o tamanho do rodapé */
+        justify-content: center;
+    }
+
+    .brand-card {
+        position: relative;
+        width: 100vw;
+        left: 0;
+        top: 0;
+        transform: none;
+        margin-bottom: 3rem;
+        justify-content: center;
+        box-shadow: none;
+        padding: 1rem 1.5rem;
+    }
+
+    .login-card {
+        position: absolute;
+        padding: 1.5rem;
+        margin-top: 1;
+    }
+
+    .footer-links {
+        gap: 0.5rem;
+    }
+
+    .l-footer {
+        position: relative;
+        padding: 1rem;
+    }
+
+    .login-card__title {
+        font-size: 1.5rem;
+    }
+
+    .form-control {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+}
