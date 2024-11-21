@@ -43,7 +43,6 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #F6F6F6;
 }
 
 /* Modules */
@@ -51,7 +50,7 @@ body {
     position: absolute;
     left: 1rem;
     top: 50%;
-    transform: translateY(-320px); /* Posiciona em relação ao centro */
+    transform: translateY(-340px); /* Posiciona em relação ao centro */
     background: white;
     padding: 1.25rem 2rem;  /* Padding maior */
     border-radius: 12px;    /* Border radius maior */
@@ -83,6 +82,8 @@ body {
     border-radius: 12px;  /* Border radius maior */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-top: 3rem;
+    height: 24rem;
+
 }
 
 .login-card__title {
@@ -209,7 +210,6 @@ body {
 }
 
 .form-box {
-
     text-align: center;
     max-width: 400px;
     margin: 2rem auto;
@@ -219,11 +219,11 @@ body {
 .input-box input {
     width: 100%;
     padding: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
-    background-color: #f9f9f9;
+    background-color: #cbcaca;
     color: #555;
 }
 
@@ -238,7 +238,7 @@ body {
 }
 
 .button-container button {
-    background-color: #2b6cb0;
+    background-color: #47688D;
     color: #fff;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -256,7 +256,13 @@ body {
     margin-top: 2rem;
     font-size: 0.875rem;
     color: #555;
-    text-align: left;
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
 }
 
 .rules p {
@@ -265,7 +271,7 @@ body {
 }
 
 .rules ul {
-    list-style: disc;
+    list-style: none;
     padding-left: 1.5rem;
 }
 
@@ -291,22 +297,22 @@ body {
         justify-content: center;
     }
 
-
     .brand-card {
         position: relative;
         width: 100vw;
         left: 0;
         top: 0;
         transform: none;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         justify-content: center;
         box-shadow: none;
         padding: 1rem 1.5rem;
     }
 
     .login-card {
+        position: absolute;
         padding: 1.5rem;
-        margin-top: 0;
+        margin-top: 1;
     }
 
     .footer-links {
