@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeuPix.ai - Login</title>
+    <link rel="stylesheet" href="novaChave.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+<main class="l-container">
+    <div class="brand-card">
+        <img src="../assets/MeuPiX-Escudo.png" alt="MeuPix.ai Logo" class="brand__logo">
+        <span class="brand__text"><span>MeuPix.ai</span></span>
+    </div>
+
+    <div class="login-card">
+        <h1 class="login-card__title">Sua nova chave Pix:</h1>
+
+        <div class="form-box">
+            <form action="#" method="post">
+                <div class="input-box">
+                    <input type="text" name="endereco" placeholder="Endereço" required />
+                </div>
+                <div class="input-box">
+                    <select name="tipo-chave" required>
+                        <option value="" disabled selected>Como você quer sua chave?</option>
+                        <option value="email">Email</option>
+                        <option value="telefone">Telefone</option>
+                        <option value="cpf">CPF</option>
+                    </select>
+                </div>
+                <div class="button-container">
+                    <button type="submit">Verificar Disponibilidade</button>
+                </div>
+            </form>
+            <div class="rules">
+                <p>Regras para a criação:</p>
+                <ul>
+                    <li>Tamanho: --a--</li>
+                    <li>Apenas números e letras sem acentos</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="l-footer">
+    <nav class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">FAQ</a>
+        <a href="#">Acessar minha conta</a>
+        <a href="#">Precisa de ajuda?</a>
+    </nav>
+</footer>
+
+<script defer src="../script.js"></script>
+</body>
+</html>
