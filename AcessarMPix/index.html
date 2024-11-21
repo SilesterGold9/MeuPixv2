@@ -3,69 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de login do MeuPix.ai - Acesse sua conta">
     <title>MeuPix.ai - Login</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 <body>
 <main class="l-container">
-    <div class="brand-card">
-        <img src="../assets/MeuPiX-Escudo.png" alt="MeuPix.ai Logo" class="brand__logo">
-        <span class="brand__text"><span>MeuPix.ai</span></span>
+    <div class="brand-card" aria-labelledby="brand-description">
+        <img src="../assets/MeuPiX-Escudo.png" alt="Logo MeuPix.ai" class="brand__logo">
+        <strong class="brand__text" id="brand-description">MeuPix.ai</strong>
     </div>
 
     <div class="login-card">
         <h1 class="login-card__title">Acessar conta MeuPix</h1>
 
-        <form>
+        <form aria-label="Formulário de Login" novalidate>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="E-mail" required>
-                <span class="form-icon"><i class="fa-regular fa-envelope"></i></span>
+                <label for="email" class="sr-only">E-mail</label>
+                <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="E-mail"
+                        required
+                        autocomplete="email"
+                        aria-required="true"
+                >
+                <span class="form-icon" aria-hidden="true">
+                        <i class="fa-regular fa-envelope"></i>
+                    </span>
             </div>
 
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Senha" required>
-                <span class="form-icon"><i class="fa-solid fa-lock"></i></span>
+                <label for="password" class="sr-only">Senha</label>
+                <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Senha"
+                        required
+                        autocomplete="current-password"
+                        aria-required="true"
+                        minlength="8"
+                >
+                <span class="form-icon" aria-hidden="true">
+                        <i class="fa-solid fa-lock"></i>
+                    </span>
             </div>
 
             <div class="forgot-password">
-                <a href="#">Esqueci minha senha</a>
+                <a href="#" aria-label="Clique aqui para recuperar sua senha">
+                    Esqueci minha senha
+                </a>
             </div>
 
-            <button type="submit" id="submitBtn" class="btn btn--primary">Entrar</button>
-
-            <script>
-                const button = document.getElementById('submitBtn');
-
-                button.addEventListener('click', () => {
-                    // Adiciona o estado de loading
-                    button.classList.add('btn--loading');
-                    button.disabled = true;
-
-                    // Simula uma ação (como envio de formulário)
-                    setTimeout(() => {
-                        // Remove o estado de loading
-                        button.classList.remove('btn--loading');
-                        button.disabled = false;
-                    }, 3000); // Tempo de loading simulado (3 segundos)
-                });
-            </script>
+            <button
+                    type="submit"
+                    id="submitBtn"
+                    class="btn btn--primary"
+                    aria-live="polite"
+            >
+                Entrar
+            </button>
         </form>
     </div>
 </main>
 
 <footer class="l-footer">
-    <nav class="footer-links">
-        <a href="#">Termos de Uso</a>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">FAQ</a>
-        <a href="#">Acessar minha conta</a>
-        <a href="#">Precisa de ajuda?</a>
+    <nav class="footer-links" aria-label="Links úteis do rodapé">
+        <a href="#" aria-label="Ler os termos de uso">Termos de Uso</a>
+        <a href="#" aria-label="Ler a política de privacidade">Política de Privacidade</a>
+        <a href="#" aria-label="Acessar perguntas frequentes">FAQ</a>
+        <a href="#" aria-label="Ir para página de login">Acessar minha conta</a>
+        <a href="#" aria-label="Obter ajuda">Precisa de ajuda?</a>
     </nav>
 </footer>
 
-<script defer src="../script.js"></script>
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.querySelector('#submitBtn');
+        btn.classList.add('btn--loading');
+        btn.textContent = 'Entrando...';
+
+        // Simular requisição
+        setTimeout(() => {
+            btn.classList.remove('btn--loading');
+            btn.textContent = 'Entrar';
+        }, 2000);
+    });
+</script>
 </body>
 </html>

@@ -3,64 +3,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeuPix.ai - Login</title>
-    <link rel="stylesheet" href="novaChave.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="description" content="Criar nova chave Pix MeuPix.ai">
+    <title>MeuPix.ai - Nova Chave Pix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* Base */
+        :root {
+            --primary-blue: #47688D;
+            --primary-blue-hover: #3a5872;
+            --text-color: #2D2508;
+            --link-color: #0066cc;
+            --gray-bg: #f0f0f0;
+            --success-color: #28a745;
+            --transition-speed: 0.3s;
+            --footer-bg: #f8f9fa;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #F6F6F6;
+        }
+
+        /* Layout */
+        .l-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            justify-content: flex-start;
+            min-height: calc(100vh - 80px); /* Ajuste para o footer */
+        }
+
+        /* Brand Card */
+        .brand-card {
+            position: relative;
+            background: white;
+            padding: 1.25rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .brand__logo {
+            width: 40px;
+            height: 40px;
+            transition: transform var(--transition-speed);
+        }
+
+        .brand__logo:hover {
+            transform: scale(1.1);
+        }
+
+        .brand__text {
+            color: #000;
+            font-weight: 500;
+            font-size: 1.25rem;
+        }
+
+        /* Login Card */
+        .login-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-out;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-card__title {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        /* Form Elements */
+        .form-box {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-box input,
+        .input-box select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-bg);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--gray-bg);
+            color: var(--text-color);
+            transition: all var(--transition-speed);
+        }
+
+        .input-box input:hover,
+        .input-box select:hover {
+            background-color: white;
+        }
+
+        .input-box input:focus,
+        .input-box select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(71, 104, 141, 0.2);
+        }
+
+        .input-box select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        /* Button */
+        .button-container {
+            margin-top: 2rem;
+        }
+
+        .button-container button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .button-container button:hover {
+            background-color: var(--primary-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(71, 104, 141, 0.2);
+        }
+
+        .button-container button:active {
+            transform: translateY(0);
+        }
+
+        /* Rules Section */
+        .rules {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: fadeIn 0.6s ease-out 0.2s backwards;
+        }
+
+        .rules p {
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--primary-blue);
+        }
+
+        .rules ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        .rules li {
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .rules li::before {
+            content: "•";
+            color: var(--primary-blue);
+            position: absolute;
+            left: -1rem;
+        }
+
+        /* Footer */
+        .l-footer {
+            background-color: var(--footer-bg);
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-speed);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .l-container {
+                padding: 1rem;
+            }
+
+            .login-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .login-card__title {
+                font-size: 1.4rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-card {
+                padding: 1rem 1.5rem;
+            }
+
+            .brand__logo {
+                width: 32px;
+                height: 32px;
+            }
+
+            .brand__text {
+                font-size: 1.1rem;
+            }
+
+            .rules {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .brand-card,
+            .login-card,
+            .rules {
+                background-color: #2d2d2d;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .brand__text {
+                color: #ffffff;
+            }
+
+            .input-box input,
+            .input-box select {
+                background-color: #3d3d3d;
+                border-color: #3d3d3d;
+                color: #ffffff;
+            }
+
+            .input-box input:focus,
+            .input-box select:focus {
+                background-color: #4d4d4d;
+                border-color: var(--primary-blue);
+            }
+
+            .l-footer {
+                background-color: #2d2d2d;
+            }
+
+            .footer-links a {
+                color: #ffffff;
+            }
+        }
+    </style>
 </head>
 <body>
 <main class="l-container">
-    <div class="brand-card">
-        <img src="../assets/MeuPiX-Escudo.png" alt="MeuPix.ai Logo" class="brand__logo">
-        <span class="brand__text"><span>MeuPix.ai</span></span>
+    <div class="brand-card" aria-labelledby="brand-description">
+        <img src="../assets/MeuPiX-Escudo.png" alt="Logo MeuPix.ai" class="brand__logo">
+        <strong class="brand__text" id="brand-description">MeuPix.ai</strong>
     </div>
 
     <div class="login-card">
-        <h1 class="login-card__title">Sua nova chave Pix:</h1>
+        <h1 class="login-card__title">Sua nova chave Pix</h1>
 
         <div class="form-box">
-            <form action="#" method="post">
+            <form action="#" method="post" aria-label="Formulário de criação de chave Pix">
                 <div class="input-box">
-                    <input type="text" name="endereco" placeholder="Endereço" required />
+                    <label for="endereco" class="sr-only">Endereço</label>
+                    <input
+                            type="text"
+                            id="endereco"
+                            name="endereco"
+                            placeholder="Endereço"
+                            required
+                            aria-required="true"
+                    />
                 </div>
+
                 <div class="input-box">
-                    <select name="tipo-chave" required>
+                    <label for="tipo-chave" class="sr-only">Tipo de chave</label>
+                    <select
+                            id="tipo-chave"
+                            name="tipo-chave"
+                            required
+                            aria-required="true"
+                    >
                         <option value="" disabled selected>Como você quer sua chave?</option>
                         <option value="email">Email</option>
                         <option value="telefone">Telefone</option>
                         <option value="cpf">CPF</option>
                     </select>
                 </div>
+
                 <div class="button-container">
                     <button type="submit">Verificar Disponibilidade</button>
                 </div>
             </form>
-
         </div>
-
     </div>
 
-    <div class="rules">
+    <div class="rules" role="complementary" aria-label="Regras para criação da chave">
         <p>Regras para a criação:</p>
         <ul>
             <li>Tamanho: --a--</li>
             <li>Apenas números e letras sem acentos</li>
         </ul>
     </div>
-
 </main>
 
-<footer class="l-footer">
-    <nav class="footer-links">
-        <a href="#">Termos de Uso</a>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">FAQ</a>
-        <a href="#">Acessar minha conta</a>
-        <a href="#">Precisa de ajuda?</a>
-    </nav>
-</footer>
+<!--<footer class="l-footer">-->
+<!--    <nav class="footer-links" aria-label="Links do rodapé">-->
+<!--        <a href="#">Termos de Uso</a>-->
+<!--        <a href="#">Política de Privacidade</a>-->
+<!--        <a href="#">FAQ</a>-->
+<!--        <a href="#">Acessar minha conta</a>-->
+<!--        <a href="#">Precisa de ajuda?</a>-->
+<!--    </nav>-->
+<!--</footer>-->
 
-<script defer src="../script.js"></script>
+<script>
+    const form = document.querySelector('form');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Adiciona estado de loading
+        submitButton.textContent = 'Verificando...';
+        submitButton.disabled = true;
+
+        // Simula verificação
+        setTimeout(() => {
+            submitButton.textContent = 'Verificar Disponibilidade';
+            submitButton.disabled = false;
+            // Adicione aqui a lógica real de verificação
+        }, 2000);
+    });
+</script>
 </body>
 </html>

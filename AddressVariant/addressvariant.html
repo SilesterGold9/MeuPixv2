@@ -3,70 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeuPix.ai - Login</title>
-    <link rel="stylesheet" href="addressvariant.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="description" content="Configuração de endereço MeuPix.ai">
+    <title>MeuPix.ai - Configuração de Endereço</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* Base */
+        :root {
+            --primary-blue: #47688D;
+            --primary-blue-hover: #3a5872;
+            --text-color: #2D2508;
+            --link-color: #0066cc;
+            --gray-bg: #f0f0f0;
+            --success-color: #28a745;
+            --transition-speed: 0.3s;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #F6F6F6;
+        }
+
+        /* Layout */
+        .l-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Brand Card */
+        .brand-card {
+            position: relative;
+            background: white;
+            padding: 1.25rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .brand__logo {
+            width: 40px;
+            height: 40px;
+            transition: transform var(--transition-speed);
+        }
+
+        .brand__logo:hover {
+            transform: scale(1.1);
+        }
+
+        .brand__text {
+            color: #000;
+            font-weight: 500;
+            font-size: 1.25rem;
+        }
+
+        /* Main Card */
+        .login-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .login-card__title {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--success-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .login-card__title i {
+            font-size: 1.4rem;
+        }
+
+        /* User Section */
+        .user {
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--gray-bg);
+            border-radius: 8px;
+            animation: fadeIn 0.6s ease-out 0.3s backwards;
+        }
+
+        .user h2 {
+            opacity: 0.75;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        /* Form Elements */
+        .form-box {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-box select {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border: 2px solid var(--gray-bg);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--gray-bg);
+            color: var(--text-color);
+            transition: all var(--transition-speed);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        .input-box select:hover {
+            background-color: white;
+        }
+
+        .input-box select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(71, 104, 141, 0.2);
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn--primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn--outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(71, 104, 141, 0.2);
+        }
+
+        .btn--primary:hover {
+            background-color: var(--primary-blue-hover);
+        }
+
+        .btn--outline:hover {
+            background-color: rgba(71, 104, 141, 0.1);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .l-container {
+                padding: 1rem;
+            }
+
+            .login-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .login-card__title {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-card {
+                padding: 1rem 1.5rem;
+            }
+
+            .brand__logo {
+                width: 32px;
+                height: 32px;
+            }
+
+            .brand__text {
+                font-size: 1.1rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .brand-card,
+            .login-card {
+                background-color: #2d2d2d;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .brand__text {
+                color: #ffffff;
+            }
+
+            .user {
+                background-color: #3d3d3d;
+            }
+
+            .user h2 {
+                color: #ffffff;
+            }
+
+            .input-box select {
+                background-color: #3d3d3d;
+                border-color: #3d3d3d;
+                color: #ffffff;
+            }
+
+            .input-box select:focus {
+                background-color: #4d4d4d;
+                border-color: var(--primary-blue);
+            }
+
+            .btn--outline {
+                border-color: #ffffff;
+                color: #ffffff;
+            }
+
+            .btn--outline:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
 </head>
 <body>
 <main class="l-container">
-    <div class="brand-card">
-        <img src="../assets/MeuPiX-Escudo.png" alt="MeuPix.ai Logo" class="brand__logo">
-        <span class="brand__text"><span>MeuPix.ai</span></span>
+    <div class="brand-card" aria-labelledby="brand-description">
+        <img src="../assets/MeuPiX-Escudo.png" alt="Logo MeuPix.ai" class="brand__logo">
+        <strong class="brand__text" id="brand-description">MeuPix.ai</strong>
     </div>
 
     <div class="login-card">
-        <h1 class="login-card__title">Ótimo! Seu Endereço está Disponível!</h1>
+        <h1 class="login-card__title">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            Ótimo! Seu Endereço está Disponível!
+        </h1>
 
         <div class="form-box">
-            <div class="user">
+            <div class="user" role="status" aria-label="Email do usuário">
                 <h2>silvester@demo.xd</h2>
             </div>
 
-            <form action="#" method="post">
-
+            <form action="#" method="post" aria-label="Formulário de configuração de endereço">
                 <div class="input-box">
-                    <label>
-                        <select name="tipo-chave" required>
-                            <option value="" disabled selected>Selecione o período de assinatura</option>
-                            <option value="1sem">1 Semana</option>
-                            <option value="1mes">1 Mês</option>
-                            <option value="2meses">2 Meses</option>
-                            <option value="3meses">3 Meses</option>
-                        </select>
+                    <label class="sr-only" for="subscription-period">
+                        Período de assinatura
                     </label>
+                    <select
+                            id="subscription-period"
+                            name="subscription-period"
+                            required
+                            aria-required="true"
+                    >
+                        <option value="" disabled selected>Selecione o período de assinatura</option>
+                        <option value="1sem">1 Semana</option>
+                        <option value="1mes">1 Mês</option>
+                        <option value="2meses">2 Meses</option>
+                        <option value="3meses">3 Meses</option>
+                    </select>
                 </div>
+
                 <div class="button-container">
-                    <button type="submit">Criar uma conta</button>
-                    <button type="submit">Já Tenho uma Conta</button>
+                    <button type="button" class="btn btn--outline" aria-label="Já Tenho uma Conta">
+                        Já Tenho uma Conta
+                    </button>
+                    <button type="submit" class="btn btn--primary" aria-label="Criar uma Conta">
+                        Criar uma Conta
+                    </button>
                 </div>
             </form>
-
         </div>
-
     </div>
-
-<!--    <div class="rules">-->
-<!--        <p>Regras para a criação:</p>-->
-<!--        <ul>-->
-<!--            <li>Tamanho: &#45;&#45;a&#45;&#45;</li>-->
-<!--            <li>Apenas números e letras sem acentos</li>-->
-<!--        </ul>-->
-<!--    </div>-->
-
 </main>
 
-<!--<footer class="l-footer">-->
-<!--    <nav class="footer-links">-->
-<!--        <a href="#">Termos de Uso</a>-->
-<!--        <a href="#">Política de Privacidade</a>-->
-<!--        <a href="#">FAQ</a>-->
-<!--        <a href="#">Acessar minha conta</a>-->
-<!--        <a href="#">Precisa de ajuda?</a>-->
-<!--    </nav>-->
-<!--</footer>-->
+<script>
+    // Adicionar funcionalidade de loading aos botões
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const originalText = this.textContent;
+            this.classList.add('btn--loading');
+            this.textContent = this.classList.contains('btn--primary') ?
+                'Registrando...' : 'Alterando...';
 
-<script defer src="../script.js"></script>
+            // Simular ação - remover em produção
+            setTimeout(() => {
+                this.classList.remove('btn--loading');
+                this.textContent = originalText;
+            }, 2000);
+        });
+    });
+
+    // Validação do formulário
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const select = document.getElementById('subscription-period');
+        if (!select.value) {
+            select.focus();
+            // Adicionar feedback visual de erro se necessário
+        }
+    });
+</script>
 </body>
 </html>

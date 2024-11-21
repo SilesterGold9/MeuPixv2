@@ -3,79 +3,395 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Criar conta MeuPix.ai">
   <title>MeuPix.ai - Login</title>
-  <link rel="stylesheet" href="conta.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    /* Base */
+    :root {
+      --primary-blue: #47688D;
+      --primary-blue-hover: #3a5872;
+      --text-color: #2D2508;
+      --link-color: #0066cc;
+      --gray-bg: #f0f0f0;
+      --success-color: #28a745;
+      --transition-speed: 0.3s;
+      --error-color: #dc3545;
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #F6F6F6;
+    }
+
+    /* Layout */
+    .l-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Brand Card */
+    .brand-card {
+      position: relative;
+      background: white;
+      padding: 1.25rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      animation: slideDown 0.6s ease-out;
+    }
+
+    .brand__logo {
+      width: 40px;
+      height: 40px;
+      transition: transform var(--transition-speed);
+    }
+
+    .brand__logo:hover {
+      transform: scale(1.1);
+    }
+
+    .brand__text {
+      color: #000;
+      font-weight: 500;
+      font-size: 1.25rem;
+    }
+
+    /* Login Card */
+    .login-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    .login-card__title {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--primary-blue);
+    }
+
+    /* Form Elements */
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1rem 1rem 1rem 2.5rem;
+      border: 2px solid var(--gray-bg);
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: var(--gray-bg);
+      color: var(--text-color);
+      transition: all var(--transition-speed);
+    }
+
+    .form-control:hover {
+      background-color: white;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(71, 104, 141, 0.2);
+    }
+
+    .form-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-blue);
+      opacity: 0.7;
+    }
+
+    /* Checkbox styles */
+    .forgot-password {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .forgot-password input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .forgot-password label {
+      cursor: pointer;
+    }
+
+    /* Button */
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-speed);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn--primary {
+      background-color: var(--primary-blue);
+      color: white;
+    }
+
+    .btn--primary:hover {
+      background-color: var(--primary-blue-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(71, 104, 141, 0.2);
+    }
+
+    .btn--primary:active {
+      transform: translateY(0);
+    }
+
+    .btn--loading {
+      position: relative;
+      color: transparent;
+    }
+
+    .btn--loading::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      border: 2px solid white;
+      border-radius: 50%;
+      border-top-color: transparent;
+      transform: translate(-50%, -50%);
+      animation: spin 1s linear infinite;
+    }
+
+    /* Animations */
+    @keyframes slideDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .l-container {
+        padding: 1rem;
+      }
+
+      .login-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .login-card__title {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-card {
+        padding: 1rem 1.5rem;
+      }
+
+      .brand__logo {
+        width: 32px;
+        height: 32px;
+      }
+
+      .brand__text {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .brand-card,
+      .login-card {
+        background-color: #2d2d2d;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .brand__text {
+        color: #ffffff;
+      }
+
+      .login-card__title {
+        color: #ffffff;
+      }
+
+      .form-control {
+        background-color: #3d3d3d;
+        border-color: #3d3d3d;
+        color: #ffffff;
+      }
+
+      .form-control:focus {
+        background-color: #4d4d4d;
+        border-color: var(--primary-blue);
+      }
+
+      .form-icon {
+        color: #ffffff;
+      }
+
+      .forgot-password {
+        color: #ffffff;
+      }
+    }
+  </style>
 </head>
 <body>
 <main class="l-container">
-  <div class="brand-card">
-    <img src="../assets/MeuPiX-Escudo.png" alt="MeuPix.ai Logo" class="brand__logo">
-    <span class="brand__text"><span>MeuPix.ai</span></span>
+  <div class="brand-card" aria-labelledby="brand-description">
+    <img src="../assets/MeuPiX-Escudo.png" alt="Logo MeuPix.ai" class="brand__logo">
+    <strong class="brand__text" id="brand-description">MeuPix.ai</strong>
   </div>
 
   <div class="login-card">
     <h1 class="login-card__title">Criar conta MeuPix</h1>
 
-    <form>
-
+    <form action="#" method="post" aria-label="Formulário de criação de conta">
       <div class="form-group">
-        <label>
-          <input type="text" class="form-control" placeholder="Qual o seu nome" required>
-        </label>
+        <label for="name" class="sr-only">Nome</label>
+        <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Qual o seu nome"
+                required
+                aria-required="true"
+        >
         <span class="form-icon"><i class="fa-solid fa-user-pen"></i></span>
       </div>
 
       <div class="form-group">
-        <label>
-          <input type="email" class="form-control" placeholder="Informe seu E-mail" required>
-        </label>
+        <label for="email" class="sr-only">E-mail</label>
+        <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Informe seu E-mail"
+                required
+                aria-required="true"
+        >
         <span class="form-icon"><i class="fa-regular fa-envelope"></i></span>
       </div>
 
-
       <div class="form-group">
-        <label>
-          <input type="password" class="form-control" placeholder="Crie uma Senha" required>
-        </label>
+        <label for="password" class="sr-only">Senha</label>
+        <input
+                type="password"
+                id="password"
+                class="form-control"
+                placeholder="Crie uma Senha"
+                required
+                aria-required="true"
+        >
         <span class="form-icon"><i class="fa-solid fa-lock"></i></span>
       </div>
 
       <div class="form-group">
-        <label>
-          <input type="password" class="form-control" placeholder="Confirme sua Senha" required>
-        </label>
+        <label for="confirm-password" class="sr-only">Confirmar Senha</label>
+        <input
+                type="password"
+                id="confirm-password"
+                class="form-control"
+                placeholder="Confirme sua Senha"
+                required
+                aria-required="true"
+        >
         <span class="form-icon"><i class="fa-solid fa-lock"></i></span>
       </div>
 
       <div class="forgot-password">
-        <input type="checkbox" id="terms" required>
+        <input type="checkbox" id="terms" required aria-required="true">
         <label for="terms">Aceito os termos de uso do MeuPix.ai</label>
       </div>
 
-      <button type="submit" id="submitBtn" class="btn btn--primary">Criar Conta</button>
-
-      <script>
-        const button = document.getElementById('submitBtn');
-
-        button.addEventListener('click', () => {
-          // Adiciona o estado de loading
-          button.classList.add('btn--loading');
-          button.disabled = true;
-
-          // Simula uma ação (como envio de formulário)
-          setTimeout(() => {
-            // Remove o estado de loading
-            button.classList.remove('btn--loading');
-            button.disabled = false;
-          }, 3000); // Tempo de loading simulado (3 segundos)
-        });
-      </script>
+      <button type="submit" id="submitBtn" class="btn btn--primary">
+        Criar Conta
+      </button>
     </form>
   </div>
 </main>
 
-<script defer src="../script.js"></script>
+<script>
+  const form = document.querySelector('form');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Adiciona estado de loading
+    submitBtn.classList.add('btn--loading');
+    submitBtn.disabled = true;
+
+    // Simula envio do formulário
+    setTimeout(() => {
+      submitBtn.classList.remove('btn--loading');
+      submitBtn.disabled = false;
+      // Adicione aqui a lógica real de envio do formulário
+    }, 2000);
+  });
+</script>
 </body>
 </html>
